@@ -121,3 +121,15 @@ def search_book(title):
     connection.close()
 
     return results
+
+def update_book(title, isbn):
+    connection = get_connection()
+    cursor = connection.cursor()
+    
+    sql="update python_book set title = %s where isbn = %s"
+        
+    cursor.execute(sql, (title,isbn))
+    connection.commit() 
+    
+    cursor.close()
+    connection.close()

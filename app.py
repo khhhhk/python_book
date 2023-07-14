@@ -67,7 +67,7 @@ def register_exe():
     else:
         error = '登録に失敗しました。'
         return render_template('register.html', error=error)
-
+    
 @app.route('/list')
 def list():
     book_list = db.select_all_books()
@@ -118,6 +118,20 @@ def search_book_exe():
     book_list = db.select_all_books()
  
     return render_template('list.html', books=search_results)  # Use the search results variable
+
+@app.route('/update')
+def update_book():
+    return render_template('update.html')
+
+@app.route('/update_book_exe', methods=['POST'])
+def update_book_exe():
+    title = request.form.get('title')
+    isbn = request.form.get('isbn')
+
+    db.update_book(title, isbn)
+ 
+    book_list = db.select_all_books()
+    return render_template('list.html', books=book_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
