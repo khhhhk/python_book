@@ -75,7 +75,7 @@ def select_all_books():
     connection=get_connection()
     cursor=connection.cursor()
     
-    sql='SELECT title, author, publisher, pages FROM books_sample'
+    sql='SELECT title, author, isbn FROM python_book'
     
     cursor.execute(sql)
     rows=cursor.fetchall()
@@ -83,3 +83,23 @@ def select_all_books():
     cursor.close()
     connection.close()
     return rows
+
+def insert_book(title, author, isbn):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql='INSERT INTO python_book VALUES (default, %s, %s, %s)'
+    
+    cursor.execute(sql, (title, author, isbn))
+    
+    connection.commit()
+    cursor.close()
+    connection.close()
+    
+def delete_book():
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql='DELETE FROM python_book WHERE isbn = %s'
+    
+    connection.commit()
+    cursor.close()
+    connection.close()

@@ -1,12 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
 </head>
 <body>
-    
-    <a href="{{url_for('logout')}}">ログアウト</a>
-</body>
+    <a href="{{url_for('register_book')}}">登録</a>
+    <a href="{{url_for('delete_book')}}">削除</a>
+    <a href="{{url_for('list')}}">一覧</a>
+    <a href="{{url_for('search_book')}}">検索</a>
+  </body>
 </html>

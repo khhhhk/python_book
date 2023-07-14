@@ -68,9 +68,45 @@ def register_exe():
         error = '登録に失敗しました。'
         return render_template('register.html', error=error)
 
-@app.route('/user_booklist')    
-def book_list():
-    return render_template('list.html')
+@app.route('/list')
+def list():
+    book_list = db.select_all_books()
+    return render_template('list.html', books=book_list)
+
+@app.route('/register_book')
+def register_book():
+    return render_template('register_book.html')
+    
+@app.route('/register_book_exe', methods=['POST'])
+def register_book_exe():
+    title = request.form.get('title')
+    author = request.form.get('author')
+    isbn = request.form.get('isbn')
+   
+    
+    db.insert_book(title, author, isbn)
+    
+    book_list=db.select_all_books()
+    
+    return render_template('list.html', books=book_list)
+
+@app.route('/search')
+def search_book():
+    return render_template('search.html')
+
+@app.route('/delete')
+def delete_book():
+    return render_template('delete.html')
+
+@app.route('/delete_book_exe', methods=['POST'])
+def delete_book_exe():
+    isbn = request.form.get('isbn')
+    
+    db.delete_book()
+    
+    book_list=db.select_all_books()
+    
+    return render_template('list.html', books=book_list)
 
 if __name__ == '__main__':
     app.run(debug=True)
