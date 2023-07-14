@@ -90,9 +90,6 @@ def register_book_exe():
     
     return render_template('list.html', books=book_list)
 
-@app.route('/search')
-def search_book():
-    return render_template('search.html')
 
 @app.route('/delete')
 def delete_book():
@@ -102,11 +99,25 @@ def delete_book():
 def delete_book_exe():
     isbn = request.form.get('isbn')
     
-    db.delete_book()
+    db.delete_book(isbn)  # この行の引用符を削除します
     
-    book_list=db.select_all_books()
+    book_list = db.select_all_books()
     
     return render_template('list.html', books=book_list)
+
+@app.route('/search')
+def search_book():
+    return render_template('search.html')
+
+@app.route('/search_book_exe', methods=['POST'])
+def search_book_exe():
+    title = request.form.get('title')
+
+    search_results = db.search_book(title)  # Assign the search results to a variable
+    
+    book_list = db.select_all_books()
+ 
+    return render_template('list.html', books=search_results)  # Use the search results variable
 
 if __name__ == '__main__':
     app.run(debug=True)

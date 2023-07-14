@@ -95,11 +95,29 @@ def insert_book(title, author, isbn):
     cursor.close()
     connection.close()
     
-def delete_book():
+def delete_book(isbn):
     connection = get_connection()
     cursor = connection.cursor()
     sql='DELETE FROM python_book WHERE isbn = %s'
     
+    cursor.execute(sql, (isbn,))
+    
     connection.commit()
     cursor.close()
     connection.close()
+    
+def search_book(title):
+    connection = get_connection()
+    cursor = connection.cursor()
+    sql = 'SELECT * FROM python_book WHERE title LIKE %s'
+    
+    title_pattern = f'%{title}%'  # Add wildcard characters to the title pattern
+    
+    cursor.execute(sql, (title_pattern,))
+    
+    results = cursor.fetchall()
+ 
+    cursor.close()
+    connection.close()
+
+    return results

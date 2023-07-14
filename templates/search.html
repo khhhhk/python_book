@@ -7,10 +7,9 @@
 </head>
 <body>
     <h1>検索</h1>
-<form action="{{url_for('list')}}"method="get">
-<input type="text"name="keyword">
-<button type="submit">検索</button>
-</form>
-
+        <form action="{{url_for('search_book_exe')}}"method="post">
+         タイトル：<input type="text"name="title"><br>
+        <button type="submit">検索</button>
+    </form>
 </body>
 </html>
