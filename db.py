@@ -109,7 +109,7 @@ def delete_book(isbn):
 def search_book(title):
     connection = get_connection()
     cursor = connection.cursor()
-    sql = 'SELECT * FROM python_book WHERE title LIKE %s'
+    sql = 'SELECT title, author, isbn FROM python_book WHERE title LIKE %s'
     
     title_pattern = f'%{title}%'  # Add wildcard characters to the title pattern
     
