@@ -4,14 +4,86 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    h3 {
+      color: #333;
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    form {
+      max-width: 300px;
+      margin: 20px auto;
+      padding: 50px;
+      border: 1px solid #ccc;
+      background-color: #fff;
+      border-radius: 5px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    }
+
+    input[type="text"],
+    input[type="password"] {
+      width: 93%;
+      padding: 10px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+    }
+
+    button[type="submit"] {
+      width: 100%;
+      padding: 10px;
+      border: none;
+      background-color: #007bff;
+      color: #fff;
+      border-radius: 3px;
+      cursor: pointer;
+    }
+
+    button[type="submit"]:hover {
+      background-color: #0056b3;
+    }
+
+    a {
+      display: block;
+      text-align: center;
+      margin-top: 10px;
+      color: #007bff;
+      text-decoration: none;
+    }
+
+    a:hover {
+      text-decoration: underline;
+    }
+
+    p {
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    p.error {
+      color: red;
+    }
+
+    p.msg {
+      color: blue;
+    }
+  </style>
 </head>
 <body>
   <h3>ログイン画面</h3>
   {% if error != null %}
-    <p style="color:red">{{error}}</p>
+    <p class="error">{{error}}</p>
   {% endif %}
   {% if msg != null %}
-    <p style="color:blue">{{msg}}</p>
+    <p class="msg">{{msg}}</p>
   {% endif %}
   <form action="{{url_for('login')}}" method="post">
     ユーザ名:<input type="text" name="username" value="{{data.user_name if data is defined else ''}}"><br>

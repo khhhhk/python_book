@@ -7,25 +7,60 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Document</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f0f0f0;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #007bff;
+      padding: 10px 0;
+    }
+
+    .navbar-brand {
+      color: #fff;
+      font-size: 24px;
+      font-weight: bold;
+    }
+
+    .navbar-nav .nav-link {
+      color: #fff;
+      font-size: 18px;
+      padding: 10px 15px;
+      text-decoration: none;
+    }
+
+    .navbar-nav .nav-link:hover {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 5px;
+    }
+
+    .container-fluid {
+      max-width: 1200px;
+      margin: 0 auto;
+    }
+  </style>
 </head>
 <body>
-    <header>
-      <nav class="navbar navbar-expand-lg navbar-light bg-light">
-        <div class="container-fluid">
-          <a class="navbar-brand" href="{{url_for('mypage')}}">図書管理システム</a>
-          <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div class="navbar-nav">
-              <a class="nav-link" href="{{url_for('list')}}">一覧</a>
-              <a class="nav-link" href="{{url_for('register_book')}}">登録</a>
-              <a class="nav-link" href="{{url_for('delete_book')}}">削除</a>
-              <a class="nav-link" href="{{url_for('search_book')}}">検索</a>
-              <a class="nav-link" href="{{url_for('update_book')}}">更新</a>
-              <a class="nav-link" href="{{url_for('logout')}}">ログアウト</a>
-            </div>
+  <header>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+      <div class="container-fluid">
+        <a class="navbar-brand" href="{{url_for('mypage')}}">図書管理システム</a>
+        <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+          <div class="navbar-nav">
+            <a class="nav-link" href="{{url_for('list')}}">一覧</a>
+            <a class="nav-link" href="{{url_for('register_book')}}">登録</a>
+            <a class="nav-link" href="{{url_for('delete_book')}}">削除</a>
+            <a class="nav-link" href="{{url_for('search_book')}}">検索</a>
+            <a class="nav-link" href="{{url_for('update_book')}}">更新</a>
+            <a class="nav-link" href="{{url_for('logout')}}">ログアウト</a>
           </div>
         </div>
-      </nav>
-    </header>
-  
-  </body>
+      </div>
+    </nav>
+  </header>
+</body>
 </html>
